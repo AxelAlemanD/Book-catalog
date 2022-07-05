@@ -25,3 +25,10 @@ Books Module:
 * **R**ead book
 * **U**pdate book
 * **D**elete book
+
+
+
+### ER Diagram
+
+![ERD](https://user-images.githubusercontent.com/99099658/177424877-bd6040c3-4ccc-42e7-987c-a2d590125038.png)
+
