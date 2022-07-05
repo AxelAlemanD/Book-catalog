@@ -29,6 +29,6 @@ Books Module:
 
 
 ### ER Diagram
+![ERD](https://user-images.githubusercontent.com/99099658/177426095-69840b58-5ea2-446f-92a8-df6ede1b57b2.png)
 
-![ERD](https://user-images.githubusercontent.com/99099658/177424877-bd6040c3-4ccc-42e7-987c-a2d590125038.png)
 
