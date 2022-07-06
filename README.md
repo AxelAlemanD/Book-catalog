@@ -19,12 +19,22 @@ Authors module:
 * **R**ead author
 * **U**pdate author
 * **D**elete author
+* Assign book to author
+* Remove book to author
 
 Books Module:
 * **C**reate book
 * **R**ead book
 * **U**pdate book
 * **D**elete book
+* Assign author to book
+* Remove author to book
+
+Genres Module:
+* **C**reate genre
+* **R**ead genre
+* **U**pdate genre
+* **D**elete genre
 
 
 
