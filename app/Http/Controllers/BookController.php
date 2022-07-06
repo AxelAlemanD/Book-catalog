@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Author;
 use App\Http\Requests\BookRequest;
 use Illuminate\Http\Request;
 
@@ -99,7 +100,7 @@ class BookController extends Controller
         if(empty($book))
             return response()->json(['message' => 'Book not found'], 404);
 
-        $author = Book::findOrFail($request->authorId);
+        $author = Author::findOrFail($request->authorId);
 
         // If the book does not have the author, it is added
         if (!($book->hasAnyAuthor($author))) {
@@ -127,7 +128,7 @@ class BookController extends Controller
         if(empty($book))
             return response()->json(['message' => 'Book not found'], 404);
 
-        $author = Book::findOrFail($request->authorId);
+        $author = Author::findOrFail($request->authorId);
 
         // If the book does have the author, it is removed
         if ($book->hasAnyAuthor($author)) {
