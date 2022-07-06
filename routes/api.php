@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\GenreController;
+use App\Http\Controllers\BookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,4 +35,14 @@ Route::controller(GenreController::class)->group(function () {
     Route::post('/genres/', 'create');
     Route::put('/genres/{id}/', 'update');
     Route::delete('/genres/{id}', 'delete');
+});
+
+
+Route::controller(BookController::class)->group(function () {
+    Route::get('/books', 'getAll');
+    Route::get('/books/{id}', 'find');
+    Route::post('/books/', 'create');
+    Route::put('/books/{id}/', 'update');
+    Route::delete('/books/{id}', 'delete');
+    Route::put('/books/{id}/assignAutor/', 'assignAutor');
 });
