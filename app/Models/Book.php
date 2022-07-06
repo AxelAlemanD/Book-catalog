@@ -34,6 +34,16 @@ class Book extends Model
     */    
     public function genre()
     {
-        return $this->belongsTo(Author::class);
+        return $this->belongsTo(Genre::class);
+    }
+
+    /**
+     * Check if the current book has any author
+     * @param Author $author
+     * @return bool
+     */
+    public function hasAnyAuthor($author)
+    {
+        return null !== $this->authors()->where('author_id', $author->id)->first();
     }
 }
