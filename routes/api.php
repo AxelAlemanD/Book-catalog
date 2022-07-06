@@ -28,6 +28,7 @@ Route::controller(AuthorController::class)->group(function () {
     Route::put('/authors/{id}/', 'update');
     Route::delete('/authors/{id}', 'delete');
     Route::put('/authors/{id}/assignBook/', 'assignBook');
+    Route::put('/authors/{id}/removeBook/', 'removeBook');
 });
 
 Route::controller(GenreController::class)->group(function () {

@@ -109,4 +109,32 @@ class AuthorController extends Controller
         return response()->json($author);
     }
 
+    /**
+     * Remove book to author
+     * @param $request
+     * @param $id author id
+     */
+    public function removeBook(Request $request, $id){
+        
+        $validated = $request->validate([
+            'bookId' => 'required|numeric',
+        ]);
+
+        $author = Author::findOrFail($id);
+
+        if(empty($author))
+            return response()->json(['message' => 'Author not found'], 404);
+
+        $book = Book::findOrFail($request->bookId);
+
+        // If the author does not have the book, it is added
+        if (($author->hasAnyBook($book))) {
+            $author->books()->detach($book);
+        }
+        
+        $author = Author::with('books')->findOrFail($id);
+
+        return response()->json($author);
+    }
+
 }
