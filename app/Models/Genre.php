@@ -23,6 +23,6 @@ class Genre extends Model
     */    
     public function book()
     {
-        return $this->hasOne(Author::class);
+        return $this->hasOne(Book::class);
     }
 }
