@@ -14,7 +14,7 @@ class AuthorController extends Controller
      * Get all authors
      */
     public function getAll(){
-        $authors = Author::all();
+        $authors = Author::with('books')->get();
         return response()->json($authors);
     }
 
@@ -23,7 +23,7 @@ class AuthorController extends Controller
      * @param $id Author id to search
      */
     public function find($id){
-        $author = Author::findOrFail($id);
+        $author = Author::with('books')->findOrFail($id);
         if(empty($author))
             return response()->json(['message' => 'author not found'], 404);
         return response()->json($author);
