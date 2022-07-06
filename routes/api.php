@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\GenreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +26,12 @@ Route::controller(AuthorController::class)->group(function () {
     Route::post('/authors/', 'create');
     Route::put('/authors/{id}/', 'update');
     Route::delete('/authors/{id}', 'delete');
+});
+
+Route::controller(GenreController::class)->group(function () {
+    Route::get('/genres', 'getAll');
+    Route::get('/genres/{id}', 'find');
+    Route::post('/genres/', 'create');
+    Route::put('/genres/{id}/', 'update');
+    Route::delete('/genres/{id}', 'delete');
 });
