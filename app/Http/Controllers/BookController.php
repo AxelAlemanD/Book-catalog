@@ -101,9 +101,37 @@ class BookController extends Controller
 
         $author = Book::findOrFail($request->authorId);
 
-        // If the book does not have the genre, it is added
+        // If the book does not have the author, it is added
         if (!($book->hasAnyAuthor($author))) {
             $book->authors()->attach($author);
+        }
+        
+        $book = Book::with('authors')->findOrFail($id);
+
+        return response()->json($book);
+    }
+
+    /**
+     * remove author to book
+     * @param $request
+     * @param $id Book id
+     */
+    public function removeAutor(Request $request, $id){
+        
+        $validated = $request->validate([
+            'authorId' => 'required|numeric',
+        ]);
+
+        $book = Book::findOrFail($id);
+
+        if(empty($book))
+            return response()->json(['message' => 'Book not found'], 404);
+
+        $author = Book::findOrFail($request->authorId);
+
+        // If the book does have the author, it is removed
+        if ($book->hasAnyAuthor($author)) {
+            $book->authors()->detach($author);
         }
         
         $book = Book::with('authors')->findOrFail($id);

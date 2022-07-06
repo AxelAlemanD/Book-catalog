@@ -45,4 +45,5 @@ Route::controller(BookController::class)->group(function () {
     Route::put('/books/{id}/', 'update');
     Route::delete('/books/{id}', 'delete');
     Route::put('/books/{id}/assignAutor/', 'assignAutor');
+    Route::put('/books/{id}/removeAutor/', 'removeAutor');
 });
