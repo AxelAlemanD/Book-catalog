@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Models\Author;
 use App\Http\Requests\AuthorRequest;
+use Illuminate\Http\Request;
 
 class AuthorController extends Controller
 {
@@ -77,6 +79,34 @@ class AuthorController extends Controller
         $author->delete();
 
         return response()->json(['message' => 'author removed'], 202);
+    }
+
+    /**
+     * Assign book to author
+     * @param $request
+     * @param $id author id
+     */
+    public function assignBook(Request $request, $id){
+        
+        $validated = $request->validate([
+            'bookId' => 'required|numeric',
+        ]);
+
+        $author = Author::findOrFail($id);
+
+        if(empty($author))
+            return response()->json(['message' => 'Author not found'], 404);
+
+        $book = Book::findOrFail($request->bookId);
+
+        // If the author does not have the book, it is added
+        if (!($author->hasAnyBook($book))) {
+            $author->books()->attach($book);
+        }
+        
+        $author = Author::with('books')->findOrFail($id);
+
+        return response()->json($author);
     }
 
 }

@@ -26,4 +26,14 @@ class Author extends Model
     {
         return $this->belongsToMany(Book::class);
     }
+
+    /**
+     * Check if the current author has any book
+     * @param Book $book
+     * @return bool
+     */
+    public function hasAnyBook($book)
+    {
+        return null !== $this->books()->where('book_id', $book->id)->first();
+    }
 }
