@@ -46,6 +46,6 @@ Route::controller(BookController::class)->group(function () {
     Route::post('/books/', 'create');
     Route::put('/books/{id}/', 'update');
     Route::delete('/books/{id}', 'delete');
-    Route::put('/books/{id}/assignAutor/', 'assignAutor');
-    Route::put('/books/{id}/removeAutor/', 'removeAutor');
+    Route::put('/books/{id}/assignAuthor/', 'assignAuthor');
+    Route::put('/books/{id}/removeAuthor/', 'removeAuthor');
 });

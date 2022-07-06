@@ -89,7 +89,7 @@ class BookController extends Controller
      * @param $request
      * @param $id Book id
      */
-    public function assignAutor(Request $request, $id){
+    public function assignAuthor(Request $request, $id){
         
         $validated = $request->validate([
             'authorId' => 'required|numeric',
@@ -117,7 +117,7 @@ class BookController extends Controller
      * @param $request
      * @param $id Book id
      */
-    public function removeAutor(Request $request, $id){
+    public function removeAuthor(Request $request, $id){
         
         $validated = $request->validate([
             'authorId' => 'required|numeric',
